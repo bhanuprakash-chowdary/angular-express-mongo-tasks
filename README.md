@@ -1,59 +1,206 @@
-# AngularCrashProject
+# 🧩 Angular + Express + Mongo Task Tracker
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.7.
+A full-stack task tracker built while following **Traversy Media's Angular Crash Course**, extended with **Express.js** and **MongoDB** for persistent data.
 
-## Development server
+---
 
-To start a local development server, run:
+## 🚀 Project Structure
 
+ANGULAR-CRASH-PROJECT/
+├── backend/ # Express + Mongo API (runs on port 5001)
+│ ├── server.js
+│ ├── models/
+│ ├── package.json
+│ └── ...
+│
+├── src/ # Angular frontend (runs on port 4200)
+│ ├── app/
+│ ├── assets/
+│ ├── environments/
+│ └── ...
+│
+├── angular.json
+├── package.json # Angular dependencies
+├── README.md
+└── tsconfig.json
+
+
+---
+
+## 🧠 Overview
+
+This project demonstrates how Angular communicates with a Node.js + Express backend, which connects to a MongoDB database using **Mongoose**.
+
+- Angular 20+ standalone components  
+- FontAwesome for UI icons  
+- Express 5 for RESTful API  
+- MongoDB Atlas for cloud storage  
+- RxJS Observables for reactive data handling  
+- Routing for navigation between components  
+
+---
+
+## 🛠️ Setup Instructions
+
+### 1️⃣ Clone this repository
 ```bash
-ng serve
+git clone https://github.com/<your-username>/angular-crash-project.git
+cd angular-crash-project
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+### 2️⃣ Install dependencies
+Install Angular frontend dependencies
+```
+npm install
+```
+Install backend dependencies
+```
+cd backend
+npm install
+cd ..
+```
+### 3️⃣ Configure MongoDB Connection
+Create a file named .env inside the backend/ folder:
+```
+MONGO_URI="mongodb+srv://<username>:<password>@cluster.mongodb.net/taskdb"
+PORT=5001
+```
+Replace <username> and <password> with your MongoDB credentials.
 
-## Code scaffolding
+### 4️⃣ Run the project
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Run both Angular and Express simultaneously from the root directory:
 
-```bash
-ng generate component component-name
+```
+npm run dev
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Angular app → http://localhost:4200
 
-```bash
-ng generate --help
+Backend API → http://localhost:5001/api/tasks
+
+Or, start them separately:
+
+# Run Angular only
+```
+npm run start:frontend
+```
+# Run backend only
+```
+npm run start:backend
 ```
 
-## Building
+---
 
-To build the project run:
+## ⚙️ Available Scripts
 
-```bash
-ng build
-```
+| Command              | Description                            |
+|----------------------|----------------------------------------|
+| npm run dev          | Run both Angular & backend together    |
+| npm run start:frontend | Start Angular development server      |
+| npm run start:backend  | Start Express backend (using nodemon) |
+| npm run build          | Build Angular app for production      |
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+---
 
-## Running unit tests
+## 🌐 API Endpoints
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+| Method | Endpoint          | Description          |
+|---------|------------------|----------------------|
+| GET     | /api/tasks        | Get all tasks        |
+| GET     | /api/tasks/:id    | Get a task by ID     |
+| POST    | /api/tasks        | Add a new task       |
+| PUT     | /api/tasks/:id    | Update a task’s reminder |
+| DELETE  | /api/tasks/:id    | Delete a task        |
 
-```bash
-ng test
-```
+---
 
-## Running end-to-end tests
+# Example Task Object:
 
-For end-to-end (e2e) testing, run:
+{
+  "_id": "690591843586974c5385b00d",
+  "id": 1,
+  "text": "Doctor Appointment",
+  "day": "May 5th at 2:30pm",
+  "reminder": true
+}
 
-```bash
-ng e2e
-```
+---
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## 🧩 Angular Features
 
-## Additional Resources
+| Feature | Description |
+|----------|-------------|
+| Standalone Components | Angular 20+ structure using `imports: []` instead of NgModules |
+| Task Service | Handles HTTP calls via HttpClient |
+| Router | Supports `/` (Tasks page) and `/about` routes |
+| FontAwesome | Integrated for icons using `@fortawesome/angular-fontawesome` |
+| Reactive Programming | Observables used for async task fetching and updates |
+| Forms | Two-way binding (`[(ngModel)]`) used for adding tasks |
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+---
+
+## 🧱 Folder Breakdown
+### Frontend (Angular)
+src/app/
+│
+├── component/
+│   ├── header/
+│   ├── footer/
+│   ├── tasks/
+│   ├── task-item/
+│   ├── add-task/
+│   └── about/
+│
+├── services/
+│   ├── tasks.service.ts
+│   └── ui.service.ts
+│
+├── app.config.ts
+├── app.routes.ts
+└── app.ts
+
+### Backend (Express)
+backend/
+│
+├── server.js
+├── models/
+│   └── Task.js
+├── package.json
+└── .env
+
+---
+
+## 🧩 Integration Details
+
+- Angular frontend communicates via `HttpClient` to the Express backend (`http://localhost:5001/api/tasks`).  
+- Express connects to MongoDB using Mongoose models.  
+- Task addition, deletion, and reminder toggling reflect instantly in the UI.  
+- Angular Router enables navigation between the Tasks page and About page.  
+
+---
+
+## 🧠 Lessons Covered (Based on Traversy Course)
+
+- Component structure and interaction  
+- Event Emitters and property binding  
+- Using services and Observables  
+- HTTP Client and backend integration  
+- Adding and deleting tasks  
+- Form handling with ngModel  
+- UI toggling and routing  
+- Integration with MongoDB (custom addition)  
+
+---
+
+## 📦 Technologies Used
+
+| Category | Technologies |
+|-----------|--------------|
+| Frontend | Angular 20+, RxJS, FontAwesome |
+| Backend | Node.js, Express 5, Mongoose |
+| Database | MongoDB Atlas |
+| Dev Tools | VS Code, Postman, GitHub |
+| Language | TypeScript, JavaScript |
+
+---
