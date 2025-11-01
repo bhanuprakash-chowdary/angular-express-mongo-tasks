@@ -7,22 +7,36 @@ A full-stack task tracker built while following **Traversy Media's Angular Crash
 ## 🚀 Project Structure
 
 ANGULAR-CRASH-PROJECT/
+│
 ├── backend/ # Express + Mongo API (runs on port 5001)
-│ ├── server.js
 │ ├── models/
+│ │ └── Task.js
+│ ├── .env
 │ ├── package.json
-│ └── ...
+│ └── server.js
 │
 ├── src/ # Angular frontend (runs on port 4200)
 │ ├── app/
+│ │ ├── component/
+│ │ │ ├── header/
+│ │ │ ├── footer/
+│ │ │ ├── tasks/
+│ │ │ ├── task-item/
+│ │ │ ├── add-task/
+│ │ │ └── about/
+│ │ ├── services/
+│ │ │ ├── tasks.service.ts
+│ │ │ └── ui.service.ts
+│ │ ├── app.config.ts
+│ │ ├── app.routes.ts
+│ │ └── app.ts
 │ ├── assets/
-│ ├── environments/
-│ └── ...
+│ └── environments/
 │
 ├── angular.json
-├── package.json # Angular dependencies
-├── README.md
-└── tsconfig.json
+├── package.json
+├── tsconfig.json
+└── README.md
 
 
 ---
